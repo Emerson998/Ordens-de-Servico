@@ -15,7 +15,7 @@ public class Cliente extends Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(mappedBy = "cliente")
-	private List<OS> lista = new ArrayList<>();
+	private List<OS> list = new ArrayList<>();
 
 	public Cliente() {
 		super();
@@ -25,12 +25,12 @@ public class Cliente extends Pessoa implements Serializable {
 		super(id, nome, cpf, telefone);
 	}
 
-	public List<OS> getLista() {
-		return lista;
+	public List<OS> getList() {
+		return list;
 	}
 
-	public void setLista(List<OS> lista) {
-		this.lista = lista;
+	public void setList(List<OS> list) {
+		this.list = list;
 	}
 
 }
