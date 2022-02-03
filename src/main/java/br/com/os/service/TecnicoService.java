@@ -14,8 +14,8 @@ public class TecnicoService {
 	@Autowired
 	private TecnicoRepository tecnicoRepository;
 
-	public Optional<Tecnico> searchById(Long id) {
+	public Tecnico searchById(Long id) {
 		Optional<Tecnico> tecnico = tecnicoRepository.findById(id);
-		return tecnico;
+		return tecnico.orElse(null);
 	}
 }
