@@ -18,52 +18,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.os.domain.Tecnico;
-import br.com.os.dto.TecnicoDto;
-import br.com.os.service.TecnicoService;
+import br.com.os.domain.Cliente;
+import br.com.os.dto.ClienteDto;
+import br.com.os.service.ClienteService;
 
 @RestController
-@RequestMapping(value = "/tecnicos")
+@RequestMapping(value = "/clientes")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 
-public class TecnicoController {
+public class ClienteController {
 
 	@Autowired
-	private TecnicoService tecnicoService;
+	private ClienteService clienteService;
 
 	@GetMapping
-	public ResponseEntity<List<TecnicoDto>> searchAll() {
-		ResponseEntity<List<TecnicoDto>> resposta = null;
-		resposta = ResponseEntity.ok(tecnicoService.searchAll());
+	public ResponseEntity<List<ClienteDto>> searchAll() {
+		ResponseEntity<List<ClienteDto>> resposta = null;
+		resposta = ResponseEntity.ok(clienteService.searchAll());
 		return resposta;
 	}
 
 	@GetMapping({ "/{cpf}", "/" })
-	public ResponseEntity<Tecnico> searchByCode(@PathVariable(required = false) String cpf) {
-		ResponseEntity<Tecnico> resposta = null;
+	public ResponseEntity<Cliente> searchByCode(@PathVariable(required = false) String cpf) {
+		ResponseEntity<Cliente> resposta = null;
 
-		resposta = ResponseEntity.ok(tecnicoService.searchByCpf(cpf));
+		resposta = ResponseEntity.ok(clienteService.searchByCpf(cpf));
 		return resposta;
 	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<TecnicoDto> save(@Valid @RequestBody TecnicoDto tecnicoDto) {
-		TecnicoDto resposta = null;
+	public ResponseEntity<ClienteDto> save(@Valid @RequestBody ClienteDto clienteDto) {
+		ClienteDto resposta = null;
 
-		resposta = tecnicoService.save(tecnicoDto);
+		resposta = clienteService.save(clienteDto);
 		return ResponseEntity.ok(resposta);
 
 	}
 
 	@PutMapping({ "/{cpf}", "/" })
-	public TecnicoDto update(@PathVariable String cpf, @RequestBody TecnicoDto tecnico) {
-		return tecnicoService.update(tecnico, cpf);
+	public ClienteDto update(@PathVariable String cpf, @RequestBody ClienteDto cliente) {
+		return clienteService.update(cliente, cpf);
 	}
 
 	@DeleteMapping({ "/{cpf}", "/" })
-	public ResponseEntity<TecnicoDto> deleteByCpf(@PathVariable String cpf) {
-		return tecnicoService.deleteByCpf(cpf);
+	public ResponseEntity<ClienteDto> deleteByCpf(@PathVariable String cpf) {
+		return clienteService.deleteByCpf(cpf);
 	}
 
 }

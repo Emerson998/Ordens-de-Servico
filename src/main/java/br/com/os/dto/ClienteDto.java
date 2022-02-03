@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotBlank;
 
-import br.com.os.domain.Tecnico;
+import br.com.os.domain.Cliente;
 
-public class TecnicoDto implements Serializable {
+public class ClienteDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -17,11 +17,11 @@ public class TecnicoDto implements Serializable {
 	@NotBlank(message = "o campo telefone e obrigatorio")
 	private String telefone;
 
-	public TecnicoDto() {
+	public ClienteDto() {
 		super();
 	}
 
-	public TecnicoDto(Tecnico obj) {
+	public ClienteDto(Cliente obj) {
 		super();
 		this.nome = obj.getNome();
 		this.cpf = obj.getCpf();
